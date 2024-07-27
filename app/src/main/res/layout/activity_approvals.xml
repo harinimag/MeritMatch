@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#66126332"
+    tools:context=".mainscreen">
+
+    <Button
+        android:id="@+id/tasks"
+        android:layout_width="144dp"
+        android:layout_height="66dp"
+        android:background="#164750"
+        android:fontFamily="monospace"
+        android:text="TASKS AVAILABLE"
+        android:textColorHighlight="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <Button
+        android:id="@+id/approvals1"
+        android:layout_width="136dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="-13dp"
+        android:background="#66126332"
+        android:fontFamily="monospace"
+        android:text="APPROVALS"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/rtasks" />
+
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="382dp"
+        android:layout_height="638dp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/tasks"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/img_5" />
+
+    <Button
+        android:id="@+id/rtasks"
+        android:layout_width="141dp"
+        android:layout_height="66dp"
+        android:background="#712A2A"
+        android:fontFamily="monospace"
+        android:text="RESERVED TASKS"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tasks" />
+
+    <TextView
+        android:id="@+id/points"
+        android:layout_width="81dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="-380dp"
+        android:background="@drawable/circleb"
+        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TableLayout
+        android:id="@+id/approvaltable"
+        android:layout_width="311dp"
+        android:layout_height="494dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="250dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.539"></TableLayout>
+    <Button
+        android:id="@+id/homebutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="-90dp"
+        android:background="@color/blue"
+        android:text="HOME"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
