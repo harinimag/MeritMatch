@@ -7,10 +7,10 @@
       </SelectionState>
       <SelectionState runConfigName="front">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-07-25T13:15:53.081344800Z">
+        <DropdownSelection timestamp="2024-07-26T18:40:02.149368400Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\harin\.android\avd\Copy_of_Pixel_3a_API_34.avd" />
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\harin\.android\avd\Pixel_3a_API_34.avd" />
             </handle>
           </Target>
         </DropdownSelection>

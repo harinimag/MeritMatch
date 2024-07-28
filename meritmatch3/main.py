@@ -49,14 +49,14 @@ def get_db():
     finally: 
         db.close()
 
-@app.post("/users", status_code=status.HTTP_201_CREATED)
+@app.post("/post_users", status_code=status.HTTP_201_CREATED)
 async def create_user(user: UserBase, db: Session = Depends(get_db)):
     db_user = models.User(**user.model_dump())
     db.add(db_user)
     db.commit()
 
 
-@app.post("/tasks", status_code=status.HTTP_201_CREATED)
+@app.post("/post_tasks", status_code=status.HTTP_201_CREATED)
 async def create_task(task: TaskBase, db: Session = Depends(get_db)):
     db_task = models.Task(**task.model_dump())
     db.add(db_task)
@@ -80,13 +80,13 @@ async def read_task(username: str, db: Session = Depends(get_db)):
     return taskdetails
 
 
-@app.get("/users", response_model=List[str], status_code=status.HTTP_200_OK)
+@app.get("/get_users", response_model=List[str], status_code=status.HTTP_200_OK)
 async def read_users(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
     users = db.query(models.User).offset(skip).limit(limit).all()
     user_list = [user.username for user in users]    
     return user_list
 
-@app.post("/rtasks", status_code=status.HTTP_201_CREATED)
+@app.post("/post_rtasks", status_code=status.HTTP_201_CREATED)
 async def create_rtask(rtask: ReservedBase, db: Session = Depends(get_db)):
     db_rtask = models.Reserved(**rtask.model_dump())
     db.add(db_rtask)
@@ -100,7 +100,7 @@ async def read_rtask(username: str, db: Session = Depends(get_db)):
     rtaskdetails = [{"taskname": rtask.taskname,"taskby":rtask.taskby,"points":str(rtask.points),"id":str(rtask.id)} for rtask in rtasks]
     return rtaskdetails
 
-@app.delete("/tasks/{task_id}", status_code=204)
+@app.delete("/delete_tasks/{task_id}", status_code=204)
 async def delete_task(task_id: int, db: Session = Depends(get_db)):
     task = db.query(models.Task).filter(models.Task.id == task_id).first()    
     if task is None:
@@ -115,7 +115,7 @@ async def create_approval(approval: ApprovalBase, db: Session = Depends(get_db))
     db.add(db_approval)
     db.commit()
 
-@app.delete("/rtasks/{rtask_id}", status_code=204)
+@app.delete("/delete_rtasks/{rtask_id}", status_code=204)
 async def delete_rtask(rtask_id: int, db: Session = Depends(get_db)):
     rtask = db.query(models.Reserved).filter(models.Reserved.id == rtask_id).first()    
     if rtask is None:
@@ -132,7 +132,7 @@ async def read_approval(ato: str, db: Session = Depends(get_db)):
     approvaldetails = [{"afrom": approval.afrom,"taskname":approval.taskname,"points":str(approval.points),"id":str(approval.id)} for approval in approvals]
     return approvaldetails
 
-@app.delete("/approval/{approval_id}", status_code=204)
+@app.delete("/delete_approval/{approval_id}", status_code=204)
 async def delete_approval(approval_id: int, db: Session = Depends(get_db)):
     approval = db.query(models.Approval).filter(models.Approval.id == approval_id).first()    
     if approval is None:
@@ -141,7 +141,7 @@ async def delete_approval(approval_id: int, db: Session = Depends(get_db)):
     db.commit()
 
 
-@app.put("/users/{username}/increase_points",status_code=status.HTTP_204_NO_CONTENT)
+@app.put("/increasep_users/{username}/increase_points",status_code=status.HTTP_204_NO_CONTENT)
 async def increase_points(username: str, points_update: PointsUpdate, db: Session = Depends(get_db)):
     user = db.query(models.User).filter(models.User.username == username).first()
     if user is None:
@@ -149,7 +149,7 @@ async def increase_points(username: str, points_update: PointsUpdate, db: Sessio
     user.karma += points_update.amount
     db.commit()
 
-@app.put("/users/{username}/decrease_points",status_code=status.HTTP_204_NO_CONTENT)
+@app.put("/decreasep_users/{username}/decrease_points",status_code=status.HTTP_204_NO_CONTENT)
 async def decrease_points(username: str, points_update: PointsUpdate, db: Session = Depends(get_db)):
     user = db.query(models.User).filter(models.User.username == username).first()
     if user is None:

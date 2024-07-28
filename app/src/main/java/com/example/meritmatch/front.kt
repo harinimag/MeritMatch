@@ -34,7 +34,7 @@ data class UserData(
 )
 
 interface UserService {
-    @POST("/users")
+    @POST("/post_users")
     fun createUser(@Body userData: UserData): Call<String>
 }
 

@@ -50,17 +50,17 @@ data class RTaskData(
 )
 
 interface CreateTask {
-    @POST("/tasks")
+    @POST("/post_tasks")
     fun createTask(@Body taskData: TaskData): Call<String>
 }
 
 interface CreateRTask {
-    @POST("/rtasks")
+    @POST("/post_rtasks")
     fun createRTask(@Body rtaskData: RTaskData): Call<String>
 }
 
 interface GetUsername {
-    @GET("/users")
+    @GET("/get_users")
     suspend fun getUsername(): Response<List<String>>
 }
 
@@ -70,7 +70,7 @@ interface TaskUsername {
 }
 
 interface TaskDelete {
-    @DELETE("/tasks/{task_id}")
+    @DELETE("/delete_tasks/{task_id}")
     fun deleteTask(@Path("task_id") taskId: Int): Call<Void>
 }
 

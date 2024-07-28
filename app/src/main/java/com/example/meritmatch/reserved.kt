@@ -47,7 +47,7 @@ interface CreateApproval {
 }
 
 interface RTaskDelete {
-    @DELETE("/rtasks/{rtask_id}")
+    @DELETE("/delete_rtasks/{rtask_id}")
     fun deleteRTask(@Path("rtask_id") rtaskId: Int): Call<Void>
 }
 

@@ -45,12 +45,12 @@ data class UserData(
 )
 
 interface IncreasePointsService {
-    @PUT("/users/{username}/increase_points")
+    @PUT("/increasep_users/{username}/increase_points")
     fun increasePoints(@Path("username") username: String, @Body pointsUpdate: PointsUpdate): Call<Void>
 }
 
 interface DecreasePointsService {
-    @PUT("/users/{username}/decrease_points")
+    @PUT("/decreasep_users/{username}/decrease_points")
     fun decreasePoints(@Path("username") username: String, @Body pointsUpdate: PointsUpdate): Call<Void>
 }
 
@@ -61,7 +61,7 @@ interface ApprovalUsername {
 
 
 interface ApprovalDelete {
-    @DELETE("/approval/{approval_id}")
+    @DELETE("/delete_approval/{approval_id}")
     fun approvalDelete(@Path("approval_id") approvalId: Int): Call<Void>
 }
 
